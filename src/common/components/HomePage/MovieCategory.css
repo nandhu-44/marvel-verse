@@ -1,0 +1,12 @@
+.horizontal-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  

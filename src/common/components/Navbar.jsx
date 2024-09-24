@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between bg-black py-4 px-32">
+    <nav className="flex justify-between bg-slate-950 py-4 px-4 lg:px-32 z-50">
       {/* Logo */}
       <Link href={"/"}>
         <Image
@@ -24,14 +24,21 @@ const Navbar = () => {
       {/* Login / ( Logout & Profile) */}
 
       {user ? (
-        <div className="flex gap-x-4 items-center">
+        <div className="flex gap-x-2 lg:gap-x-4 items-center">
           <Link
             href={"/profile"}
-            className="p-5 rounded-full bg-slate-700"
-          ></Link>
+            className="rounded-full bg-slate-700"
+          >
+            <Image
+              src="/user-profile.svg"
+              width={100}
+              height={100}
+              className="rounded-full text-white w-[44px] h-[44px] bg-white p-[1px]"
+            />
+          </Link>
           <button
             onClick={() => handleLogout()}
-            className="bg-red-600 text-white text-center rounded-md py-2 px-4 font-semibold"
+            className="bg-red-600 text-white text-center py-2 px-4 font-semibold"
           >
             Logout
           </button>
@@ -45,7 +52,7 @@ const Navbar = () => {
           }}
           className="flex items-center"
         >
-          <button className="bg-red-600 text-white text-center rounded-md py-2 px-4 font-semibold">
+          <button className="bg-red-600 text-white text-center py-2 px-4 font-semibold">
             Login
           </button>
         </Link>
