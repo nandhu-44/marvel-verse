@@ -1,12 +1,12 @@
-"use client";
-import SpidermanLoader from "@/common/components/SpidermanLoader";
+import Navbar from "@/common/components/Navbar";
 import React from "react";
 
 const HomePage = () => {
-  return <main className="bg-black text-white">
-    <header className="pt-60 bg-blue-400"></header>
-    <SpidermanLoader/>
-  </main>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 };
 
 export default HomePage;
