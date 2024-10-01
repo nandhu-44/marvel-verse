@@ -3,15 +3,18 @@ import Loader from "@/common/components/Loader";
 import Comment from "./Comment";
 import React, { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
 
 const CommentSection = ({ params }) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newComment, setNewComment] = useState("");
   const movieId = params.id;
+  const [token, setToken] = useState("");
   const { toast } = useToast();
 
   useEffect(() => {
+    setToken(localStorage?.getItem("marvel-token"));
     fetchComments();
   }, [movieId]);
 
@@ -43,7 +46,6 @@ const CommentSection = ({ params }) => {
       });
       return;
     }
-    const token = localStorage?.getItem("marvel-token");
 
     try {
       const response = await fetch("/api/comments", {
@@ -76,23 +78,36 @@ const CommentSection = ({ params }) => {
       {loading && <Loader />}
       {!loading && (
         <>
-          <form onSubmit={handleCommentSubmit} className="mb-4">
-            <textarea
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Add a comment..."
-              className="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-red-600 focus:outline-none resize-none overflow-hidden"
-              rows={1}
-              maxLength={500}
-              style={{ maxHeight: "6rem", minHeight: "2rem" }}
-            />
-            <button
-              type="submit"
-              className="mt-2 p-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition duration-200"
-            >
-              Post Comment
-            </button>
-          </form>
+          {token?.length > 0
+            ? (
+              <form onSubmit={handleCommentSubmit} className="mb-4">
+                <textarea
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder="Add a comment..."
+                  className="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-red-600 focus:outline-none resize-none overflow-hidden"
+                  rows={1}
+                  maxLength={500}
+                  style={{ maxHeight: "6rem", minHeight: "2rem" }}
+                />
+                <button
+                  type="submit"
+                  className="mt-2 p-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition duration-200"
+                >
+                  Post Comment
+                </button>
+              </form>
+            )
+            : (
+              <div className="flex flex-col items-center gap-y-2">
+                <Link
+                  href="/login"
+                  className="text-white text-center bg-red-600 px-4 py-2 rounded-md"
+                >
+                  Login to post a comment
+                </Link>
+              </div>
+            )}
           {comments.length === 0 && (
             <div className="flex pt-4 flex-row justify-center items-center gap-x-2">
               <div className="h-[0.5px] rounded-md bg-white w-1/4"></div>
