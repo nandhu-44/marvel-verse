@@ -2,9 +2,12 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 const Navbar = () => {
   const [user, setUser] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (window.localStorage.getItem("marvel-token")) {
@@ -15,6 +18,7 @@ const Navbar = () => {
   const handleLogout = () => {
     setUser(false);
     window.localStorage.removeItem("marvel-token");
+    router.push("/login");
   };
 
   return (
