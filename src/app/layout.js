@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,9 +13,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="./favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${inter.className} bg-gray-800`}>{children}</body>
+      <body className={`${inter.className} bg-gray-800`}>
+        <main>{children}</main>
+        <Toaster />
+      </body>
     </html>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./SpidermanLoader.css"
+import "./SpidermanLoader.css";
 
 const SpidermanLoader = () => {
   return (

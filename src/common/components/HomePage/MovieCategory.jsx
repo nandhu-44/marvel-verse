@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import "./MovieCategory.css";
 import Link from "next/link";
+import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi";
 
 const MovieCategory = ({ title, movies }) => {
   const sliderRef = useRef(null);
@@ -26,16 +27,20 @@ const MovieCategory = ({ title, movies }) => {
         <div className="relative">
           <button
             onClick={scrollLeft}
-            className="absolute -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-black text-white p-2 rounded transition duration-300 hover:bg-gray-700"
+            className="absolute -left-6 lg:-left-12 top-1/2 transform -translate-y-1/2 z-10 bg-black text-white p-1 rounded transition duration-300 hover:bg-gray-700"
           >
-            &lt;
+            <FiChevronsLeft className="w-6 h-6" />
           </button>
           <div
             ref={sliderRef}
             className="flex horizontal-scroll"
           >
             {movies.map((movie) => (
-              <Link key={movie.id} className="relative w-60 flex-shrink-0 mx-3" href={`/show/${movie?.id ?? ""}`}>
+              <Link
+                key={movie.id}
+                className="relative w-60 flex-shrink-0 mx-3"
+                href={`/show/${movie?.id ?? ""}`}
+              >
                 <Image
                   src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
                   alt={movie.title}
@@ -52,9 +57,9 @@ const MovieCategory = ({ title, movies }) => {
           </div>
           <button
             onClick={scrollRight}
-            className="absolute -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-black text-white p-2 rounded transition duration-300 hover:bg-gray-700"
+            className="absolute -right-6 lg:-right-12 top-1/2 transform -translate-y-1/2 z-10 bg-black text-white p-1 rounded transition duration-300 hover:bg-gray-700"
           >
-            &gt;
+            <FiChevronsRight className="w-6 h-6" />
           </button>
         </div>
       </div>
