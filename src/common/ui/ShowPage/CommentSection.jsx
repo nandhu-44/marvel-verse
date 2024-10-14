@@ -84,7 +84,7 @@ const CommentSection = ({ params }) => {
                 <textarea
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
-                  placeholder="Add a comment..."
+                  placeholder="Add a comment"
                   className="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-red-600 focus:outline-none resize-none overflow-hidden"
                   rows={1}
                   maxLength={500}

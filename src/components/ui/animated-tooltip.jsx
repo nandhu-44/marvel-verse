@@ -78,7 +78,7 @@ export const AnimatedTooltip = ({
             alt={item.name}
             loading="lazy"
             blurDataURL="/lazy.svg"
-            className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-red-600  relative transition duration-500"
+            className="object-cover hover:cursor-pointer !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-red-600  relative transition duration-500"
           />
         </div>
       ))}

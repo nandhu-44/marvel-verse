@@ -20,6 +20,8 @@ const MovieCategory = ({ title, movies }) => {
     }
   };
 
+  if (movies.length === 0) return null;
+
   return (
     <div className="flex flex-col my-6">
       <h3 className="text-white py-6 text-2xl font-bold">{title}</h3>

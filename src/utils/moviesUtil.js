@@ -10,7 +10,7 @@ function movieCategorizer(movies, popularityThreshold = 50) {
 
   const recentTime = 365 * 24 * 60 * 60 * 1000;
 
-  movies.forEach((movie) => {
+  movies?.forEach((movie) => {
     const movieDate = new Date(movie.release_date);
     const movieTime = movieDate.getTime();
 

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-
 const Navbar = () => {
   const [user, setUser] = useState(false);
   const router = useRouter();
